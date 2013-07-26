@@ -1,11 +1,11 @@
-/* line 3, ../sass/z-angular-layout.scss */
+/* line 3, ../sass/angular-layout.scss */
 .scrollbox {
   position: relative;
   /**/
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 8, ../sass/z-angular-layout.scss */
+/* line 8, ../sass/angular-layout.scss */
 .scrollbox > .scroll-viewport {
   position: absolute;
   left: 0;
@@ -15,14 +15,14 @@
   overflow: auto;
 }
 
-/* line 17, ../sass/z-angular-layout.scss */
+/* line 17, ../sass/angular-layout.scss */
 .scrollbox > .scroll-viewport > div {
   height: auto;
   width: auto;
   position: absolute;
 }
 
-/* line 23, ../sass/z-angular-layout.scss */
+/* line 23, ../sass/angular-layout.scss */
 .hbox {
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
@@ -30,7 +30,7 @@
   box-orient: horizontal;
 }
 
-/* line 27, ../sass/z-angular-layout.scss */
+/* line 27, ../sass/angular-layout.scss */
 .vbox {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
@@ -38,7 +38,7 @@
   box-orient: vertical;
 }
 
-/* line 32, ../sass/z-angular-layout.scss */
+/* line 32, ../sass/angular-layout.scss */
 .hbox,
 .vbox {
   display: -webkit-box;
@@ -54,7 +54,7 @@
   -ms-box-align: stretch;
   box-align: stretch;
 }
-/* line 37, ../sass/z-angular-layout.scss */
+/* line 37, ../sass/angular-layout.scss */
 .hbox[align="stretch"],
 .vbox[align="stretch"] {
   -webkit-box-align: stretch;
@@ -62,7 +62,7 @@
   -ms-box-align: stretch;
   box-align: stretch;
 }
-/* line 38, ../sass/z-angular-layout.scss */
+/* line 38, ../sass/angular-layout.scss */
 .hbox[align="center"],
 .vbox[align="center"] {
   -webkit-box-align: center;
@@ -70,7 +70,7 @@
   -ms-box-align: center;
   box-align: center;
 }
-/* line 39, ../sass/z-angular-layout.scss */
+/* line 39, ../sass/angular-layout.scss */
 .hbox[align="start"],
 .vbox[align="start"] {
   -webkit-box-align: start;
@@ -78,7 +78,7 @@
   -ms-box-align: start;
   box-align: start;
 }
-/* line 40, ../sass/z-angular-layout.scss */
+/* line 40, ../sass/angular-layout.scss */
 .hbox[align="end"],
 .vbox[align="end"] {
   -webkit-box-align: end;
@@ -86,7 +86,7 @@
   -ms-box-align: end;
   box-align: end;
 }
-/* line 41, ../sass/z-angular-layout.scss */
+/* line 41, ../sass/angular-layout.scss */
 .hbox[align="baseline"],
 .vbox[align="baseline"] {
   -webkit-box-align: baseline;
@@ -94,7 +94,7 @@
   -ms-box-align: baseline;
   box-align: baseline;
 }
-/* line 43, ../sass/z-angular-layout.scss */
+/* line 43, ../sass/angular-layout.scss */
 .hbox[pack="start"],
 .vbox[pack="start"] {
   -webkit-box-pack: start;
@@ -102,7 +102,7 @@
   -ms-box-pack: start;
   box-pack: start;
 }
-/* line 44, ../sass/z-angular-layout.scss */
+/* line 44, ../sass/angular-layout.scss */
 .hbox[pack="end"],
 .vbox[pack="end"] {
   -webkit-box-pack: end;
@@ -110,7 +110,7 @@
   -ms-box-pack: end;
   box-pack: end;
 }
-/* line 45, ../sass/z-angular-layout.scss */
+/* line 45, ../sass/angular-layout.scss */
 .hbox[pack="center"],
 .vbox[pack="center"] {
   -webkit-box-pack: center;
@@ -118,7 +118,7 @@
   -ms-box-pack: center;
   box-pack: center;
 }
-/* line 46, ../sass/z-angular-layout.scss */
+/* line 46, ../sass/angular-layout.scss */
 .hbox[pack="justify"],
 .vbox[pack="justify"] {
   -webkit-box-pack: justify;
@@ -126,13 +126,13 @@
   -ms-box-pack: justify;
   box-pack: justify;
 }
-/* line 48, ../sass/z-angular-layout.scss */
+/* line 48, ../sass/angular-layout.scss */
 .hbox > *,
 .vbox > * {
   display: block;
   margin: 5px;
 }
-/* line 52, ../sass/z-angular-layout.scss */
+/* line 52, ../sass/angular-layout.scss */
 .hbox > *[flex="1"],
 .vbox > *[flex="1"] {
   -webkit-box-flex: 1;
@@ -140,7 +140,7 @@
   -ms-box-flex: 1;
   box-flex: 1;
 }
-/* line 53, ../sass/z-angular-layout.scss */
+/* line 53, ../sass/angular-layout.scss */
 .hbox > *[flex="2"],
 .vbox > *[flex="2"] {
   -webkit-box-flex: 2;
@@ -148,7 +148,7 @@
   -ms-box-flex: 2;
   box-flex: 2;
 }
-/* line 54, ../sass/z-angular-layout.scss */
+/* line 54, ../sass/angular-layout.scss */
 .hbox > *[flex="3"],
 .vbox > *[flex="3"] {
   -webkit-box-flex: 3;
@@ -156,7 +156,7 @@
   -ms-box-flex: 3;
   box-flex: 3;
 }
-/* line 55, ../sass/z-angular-layout.scss */
+/* line 55, ../sass/angular-layout.scss */
 .hbox > *[flex="4"],
 .vbox > *[flex="4"] {
   -webkit-box-flex: 4;
@@ -164,7 +164,7 @@
   -ms-box-flex: 4;
   box-flex: 4;
 }
-/* line 56, ../sass/z-angular-layout.scss */
+/* line 56, ../sass/angular-layout.scss */
 .hbox > *[flex="5"],
 .vbox > *[flex="5"] {
   -webkit-box-flex: 5;
@@ -172,7 +172,7 @@
   -ms-box-flex: 5;
   box-flex: 5;
 }
-/* line 57, ../sass/z-angular-layout.scss */
+/* line 57, ../sass/angular-layout.scss */
 .hbox > *[flex="6"],
 .vbox > *[flex="6"] {
   -webkit-box-flex: 6;
@@ -180,7 +180,7 @@
   -ms-box-flex: 6;
   box-flex: 6;
 }
-/* line 58, ../sass/z-angular-layout.scss */
+/* line 58, ../sass/angular-layout.scss */
 .hbox > *[flex="7"],
 .vbox > *[flex="7"] {
   -webkit-box-flex: 7;
@@ -188,7 +188,7 @@
   -ms-box-flex: 7;
   box-flex: 7;
 }
-/* line 59, ../sass/z-angular-layout.scss */
+/* line 59, ../sass/angular-layout.scss */
 .hbox > *[flex="8"],
 .vbox > *[flex="8"] {
   -webkit-box-flex: 8;
@@ -196,7 +196,7 @@
   -ms-box-flex: 8;
   box-flex: 8;
 }
-/* line 60, ../sass/z-angular-layout.scss */
+/* line 60, ../sass/angular-layout.scss */
 .hbox > *[flex="9"],
 .vbox > *[flex="9"] {
   -webkit-box-flex: 9;
@@ -204,7 +204,7 @@
   -ms-box-flex: 9;
   box-flex: 9;
 }
-/* line 61, ../sass/z-angular-layout.scss */
+/* line 61, ../sass/angular-layout.scss */
 .hbox > *[flex="10"],
 .vbox > *[flex="10"] {
   -webkit-box-flex: 10;
@@ -212,7 +212,7 @@
   -ms-box-flex: 10;
   box-flex: 10;
 }
-/* line 62, ../sass/z-angular-layout.scss */
+/* line 62, ../sass/angular-layout.scss */
 .hbox > *[flex="11"],
 .vbox > *[flex="11"] {
   -webkit-box-flex: 11;
@@ -220,7 +220,7 @@
   -ms-box-flex: 11;
   box-flex: 11;
 }
-/* line 63, ../sass/z-angular-layout.scss */
+/* line 63, ../sass/angular-layout.scss */
 .hbox > *[flex="12"],
 .vbox > *[flex="12"] {
   -webkit-box-flex: 12;
@@ -228,7 +228,7 @@
   -ms-box-flex: 12;
   box-flex: 12;
 }
-/* line 64, ../sass/z-angular-layout.scss */
+/* line 64, ../sass/angular-layout.scss */
 .hbox > *[flex="13"],
 .vbox > *[flex="13"] {
   -webkit-box-flex: 13;
@@ -236,7 +236,7 @@
   -ms-box-flex: 13;
   box-flex: 13;
 }
-/* line 65, ../sass/z-angular-layout.scss */
+/* line 65, ../sass/angular-layout.scss */
 .hbox > *[flex="14"],
 .vbox > *[flex="14"] {
   -webkit-box-flex: 14;
@@ -244,7 +244,7 @@
   -ms-box-flex: 14;
   box-flex: 14;
 }
-/* line 66, ../sass/z-angular-layout.scss */
+/* line 66, ../sass/angular-layout.scss */
 .hbox > *[flex="15"],
 .vbox > *[flex="15"] {
   -webkit-box-flex: 15;
@@ -252,7 +252,7 @@
   -ms-box-flex: 15;
   box-flex: 15;
 }
-/* line 67, ../sass/z-angular-layout.scss */
+/* line 67, ../sass/angular-layout.scss */
 .hbox > *[flex="16"],
 .vbox > *[flex="16"] {
   -webkit-box-flex: 16;
@@ -260,7 +260,7 @@
   -ms-box-flex: 16;
   box-flex: 16;
 }
-/* line 68, ../sass/z-angular-layout.scss */
+/* line 68, ../sass/angular-layout.scss */
 .hbox > *[flex="17"],
 .vbox > *[flex="17"] {
   -webkit-box-flex: 17;
@@ -268,7 +268,7 @@
   -ms-box-flex: 17;
   box-flex: 17;
 }
-/* line 69, ../sass/z-angular-layout.scss */
+/* line 69, ../sass/angular-layout.scss */
 .hbox > *[flex="18"],
 .vbox > *[flex="18"] {
   -webkit-box-flex: 18;
@@ -276,7 +276,7 @@
   -ms-box-flex: 18;
   box-flex: 18;
 }
-/* line 70, ../sass/z-angular-layout.scss */
+/* line 70, ../sass/angular-layout.scss */
 .hbox > *[flex="19"],
 .vbox > *[flex="19"] {
   -webkit-box-flex: 19;
@@ -284,7 +284,7 @@
   -ms-box-flex: 19;
   box-flex: 19;
 }
-/* line 71, ../sass/z-angular-layout.scss */
+/* line 71, ../sass/angular-layout.scss */
 .hbox > *[flex="20"],
 .vbox > *[flex="20"] {
   -webkit-box-flex: 20;
@@ -292,7 +292,7 @@
   -ms-box-flex: 20;
   box-flex: 20;
 }
-/* line 75, ../sass/z-angular-layout.scss */
+/* line 75, ../sass/angular-layout.scss */
 .hbox > .hbox, .hbox > .vbox,
 .vbox > .hbox,
 .vbox > .vbox {

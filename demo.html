@@ -1,8 +1,19 @@
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Angular Layout POC</title>
+  <title>Angular Layout Demo</title>
+
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="css/bootstrap.css"/>
+  <link rel="stylesheet" href="css/angular-layout.css"/>
+  <link rel="stylesheet" href="css/demo.css"/>
+
+  <script src="lib/angular.js"></script>
+  <script src="ts/angular-layout.js"></script>
 </head>
 
-<body>
+<body ng-app="ng.layout">
 <vbox id="content">
   <hbox id="toolbar" pack="center" style="height: 100px" align="stretch">
     <button class="btn btn-default" ng-click="link1Clicked()" flex="1">Link1</button>
@@ -101,3 +112,4 @@
 </vbox>
 
 </body>
+</html>
