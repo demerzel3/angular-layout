@@ -7,7 +7,7 @@ module ng.layout {
     restrict = "A";
     link(scope, el:JQuery, attrs) {
       console.log("Flex attribute found");
-      el.css("-webkit-flex", attrs.flex);
+      //el.addClass("flex"+attrs.flex);
     }
 
     static factory():FlexDirective {

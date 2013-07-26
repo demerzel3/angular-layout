@@ -1,0 +1,64 @@
+@import "compass";
+
+.scrollbox {
+  position: relative; /**/
+}
+.scrollbox > .scroll-viewport {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+
+}
+.scrollbox > .scroll-viewport > div {
+  height: auto;
+  width: auto;
+  position: absolute;
+}
+
+.hbox {
+  @include display-box;
+  @include box-orient(horizontal); // display items horizontally
+  @include box-align(stretch); // stretch all elements to the highest
+
+  & > * {
+    //@include box-flex(0);
+    display: block;
+    margin: 5px;
+  }
+
+  & > .hbox,
+  & > .vbox {
+    @include display-box();
+  }
+
+}
+
+.vbox {
+  @include display-box;
+  @include box-orient(vertical); // display items vertically
+  @include box-align(stretch); // stretch all elements to the highest
+
+  & > * {
+    //@include box-flex(0);
+    display: block;
+    margin: 5px;
+  }
+
+  & > .hbox,
+  & > .vbox {
+    @include display-box;
+  }
+}
+
+[flex="1"] { @include box-flex(1); }
+[flex="2"] { @include box-flex(2); }
+[flex="3"] { @include box-flex(3); }
+[flex="4"] { @include box-flex(4); }
+[flex="5"] { @include box-flex(5); }
+[flex="6"] { @include box-flex(6); }
+[flex="7"] { @include box-flex(7); }
+[flex="8"] { @include box-flex(8); }
+[flex="9"] { @include box-flex(9); }

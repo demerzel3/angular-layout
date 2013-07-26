@@ -7,7 +7,6 @@ var ng;
             }
             FlexDirective.prototype.link = function (scope, el, attrs) {
                 console.log("Flex attribute found");
-                el.css("-webkit-flex", attrs.flex);
             };
 
             FlexDirective.factory = function () {
