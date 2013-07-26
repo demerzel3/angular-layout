@@ -1,0 +1,99 @@
+html, body {
+  height: 100%;
+}
+
+#content {
+  height: 100%;
+  background-color: #ccc;
+}
+
+#toolbar {
+  height: 43px;
+  background-color: red;
+}
+
+#footer {
+  background-color: green;
+  height: 2rem;
+}
+
+#inner {
+  background-color: white;
+}
+
+#sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+}
+#sidebar ul {
+  /*-webkit-flex: auto; /**/
+}
+#inner-content {
+  background-color: #ccc;
+}
+#inner-content > div > div > div {
+  width: 1000px; /**/
+  background-color: #0099ff;
+}
+
+
+  /* hbox and vbox classes */
+  /*
+  .scrollbox {
+      -webkit-flex: 1 1 auto;
+      overflow: scroll;
+      min-height: 100px;
+      -webkit-overflow-scrolling: touch;
+  }
+  .scrollbox > * {
+      height: 0;
+      width: 0;
+  }
+  */
+.scrollbox {
+  position: relative; /**/
+}
+.scrollbox > .scroll-viewport {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+.scrollbox > .scroll-viewport > div {
+  height: auto;
+  width: auto;
+  position: absolute;
+}
+
+.hbox {
+  display: -webkit-flex;
+  -webkit-flex-flow: row; /* disponi elementi in orizzontale */
+  -webkit-align-items: stretch; /* adatta in altezza tutti gli elementi al più alto */
+}
+
+.hbox > * {
+  -webkit-flex: 0;
+  display: block;
+  margin: 5px;
+}
+.hbox > .hbox,
+.hbox >.vbox {
+  display: -webkit-flex;
+}
+
+.vbox {
+  display: -webkit-flex;
+  -webkit-flex-flow: column;
+  -webkit-align-items: stretch;
+}
+.vbox> * {
+  -webkit-flex: 0;
+  display: block;
+  margin: 5px;
+}
+.vbox > .hbox,
+.vbox >.vbox {
+  display: -webkit-flex;
+}
