@@ -6,6 +6,7 @@ module ng.layout {
   class FlexDirective implements ng.IDirective {
     restrict = "A";
     link(scope, el:JQuery, attrs) {
+      console.log("Flex attribute found");
       el.css("-webkit-flex", attrs.flex);
     }
 

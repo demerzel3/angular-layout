@@ -1,58 +1,10 @@
-html, body {
-  height: 100%;
-}
-
-#content {
-  height: 100%;
-  background-color: #ccc;
-}
-
-#toolbar {
-  height: 43px;
-  background-color: red;
-}
-
-#footer {
-  background-color: green;
-  height: 2rem;
-}
-
-#inner {
-  background-color: white;
-}
-
-#sidebar {
-  width: 250px;
-  background-color: #f0f0f0;
-}
-#sidebar ul {
-  /*-webkit-flex: auto; /**/
-}
-#inner-content {
-  background-color: #ccc;
-}
-#inner-content > div > div > div {
-  width: 1000px; /**/
-  background-color: #0099ff;
-}
-
-
-  /* hbox and vbox classes */
-  /*
-  .scrollbox {
-      -webkit-flex: 1 1 auto;
-      overflow: scroll;
-      min-height: 100px;
-      -webkit-overflow-scrolling: touch;
-  }
-  .scrollbox > * {
-      height: 0;
-      width: 0;
-  }
-  */
+/* line 3, ../sass/angular-layout.scss */
 .scrollbox {
-  position: relative; /**/
+  position: relative;
+  /**/
 }
+
+/* line 6, ../sass/angular-layout.scss */
 .scrollbox > .scroll-viewport {
   position: absolute;
   left: 0;
@@ -61,39 +13,51 @@ html, body {
   right: 0;
   overflow: auto;
 }
+
+/* line 15, ../sass/angular-layout.scss */
 .scrollbox > .scroll-viewport > div {
   height: auto;
   width: auto;
   position: absolute;
 }
 
+/* line 21, ../sass/angular-layout.scss */
 .hbox {
   display: -webkit-flex;
-  -webkit-flex-flow: row; /* disponi elementi in orizzontale */
-  -webkit-align-items: stretch; /* adatta in altezza tutti gli elementi al più alto */
+  -webkit-flex-flow: row;
+  /* disponi elementi in orizzontale */
+  -webkit-align-items: stretch;
+  /* adatta in altezza tutti gli elementi al più alto */
 }
-
+/* line 26, ../sass/angular-layout.scss */
 .hbox > * {
   -webkit-flex: 0;
   display: block;
   margin: 5px;
 }
+
+/* line 34, ../sass/angular-layout.scss */
 .hbox > .hbox,
-.hbox >.vbox {
+.hbox > .vbox {
   display: -webkit-flex;
 }
 
+/* line 38, ../sass/angular-layout.scss */
 .vbox {
   display: -webkit-flex;
   -webkit-flex-flow: column;
   -webkit-align-items: stretch;
 }
-.vbox> * {
+
+/* line 43, ../sass/angular-layout.scss */
+.vbox > * {
   -webkit-flex: 0;
   display: block;
   margin: 5px;
 }
+
+/* line 49, ../sass/angular-layout.scss */
 .vbox > .hbox,
-.vbox >.vbox {
+.vbox > .vbox {
   display: -webkit-flex;
 }
