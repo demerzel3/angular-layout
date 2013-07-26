@@ -4,11 +4,11 @@
 
 <body>
 <vbox id="content">
-  <hbox id="toolbar">
-    <button class="btn">Link1</button>
-    <button class="btn">Link2</button>
-    <button class="btn">Link3</button>
-    <button class="btn" flex="1">Link4</button>
+  <hbox id="toolbar" pack="center" style="height: 100px" align="stretch">
+    <button class="btn btn-default" ng-click="link1Clicked()" flex="1">Link1</button>
+    <button class="btn btn-default" ng-click="link2Clicked()" flex="1">Link2</button>
+    <button class="btn btn-default" ng-click="link3Clicked()" flex="9">Link3</button>
+    <button class="btn btn-default" ng-click="link4Clicked()" flex="1">Link4</button>
   </hbox>
 
   <hbox id="inner" flex="1">

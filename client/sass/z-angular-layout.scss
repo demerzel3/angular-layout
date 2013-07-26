@@ -2,6 +2,8 @@
 
 .scrollbox {
   position: relative; /**/
+  // enable inhertial scrolling on iOS
+  -webkit-overflow-scrolling: touch;
 }
 .scrollbox > .scroll-viewport {
   position: absolute;
@@ -19,32 +21,54 @@
 }
 
 .hbox {
-  @include display-box;
   @include box-orient(horizontal); // display items horizontally
-  @include box-align(stretch); // stretch all elements to the highest
-
-  & > * {
-    //@include box-flex(0);
-    display: block;
-    margin: 5px;
-  }
-
-  & > .hbox,
-  & > .vbox {
-    @include display-box();
-  }
-
 }
 
 .vbox {
-  @include display-box;
   @include box-orient(vertical); // display items vertically
+}
+
+.hbox,
+.vbox {
+  @include display-box;
+  @include box-pack(start); // justify children if the container is larger
   @include box-align(stretch); // stretch all elements to the highest
 
+  &[align="stretch"] { @include box-align(stretch); };
+  &[align="center"] { @include box-align(center); };
+  &[align="start"] { @include box-align(start); };
+  &[align="end"] { @include box-align(end); };
+  &[align="baseline"] { @include box-align(baseline); };
+
+  &[pack="start"] { @include box-pack(start); };
+  &[pack="end"] { @include box-pack(end); };
+  &[pack="center"] { @include box-pack(center); };
+  &[pack="justify"] { @include box-pack(justify); };
+
   & > * {
-    //@include box-flex(0);
     display: block;
     margin: 5px;
+
+    &[flex="1"] { @include box-flex(1); }
+    &[flex="2"] { @include box-flex(2); }
+    &[flex="3"] { @include box-flex(3); }
+    &[flex="4"] { @include box-flex(4); }
+    &[flex="5"] { @include box-flex(5); }
+    &[flex="6"] { @include box-flex(6); }
+    &[flex="7"] { @include box-flex(7); }
+    &[flex="8"] { @include box-flex(8); }
+    &[flex="9"] { @include box-flex(9); }
+    &[flex="10"] { @include box-flex(10); }
+    &[flex="11"] { @include box-flex(11); }
+    &[flex="12"] { @include box-flex(12); }
+    &[flex="13"] { @include box-flex(13); }
+    &[flex="14"] { @include box-flex(14); }
+    &[flex="15"] { @include box-flex(15); }
+    &[flex="16"] { @include box-flex(16); }
+    &[flex="17"] { @include box-flex(17); }
+    &[flex="18"] { @include box-flex(18); }
+    &[flex="19"] { @include box-flex(19); }
+    &[flex="20"] { @include box-flex(20); }
   }
 
   & > .hbox,
@@ -52,13 +76,3 @@
     @include display-box;
   }
 }
-
-[flex="1"] { @include box-flex(1); }
-[flex="2"] { @include box-flex(2); }
-[flex="3"] { @include box-flex(3); }
-[flex="4"] { @include box-flex(4); }
-[flex="5"] { @include box-flex(5); }
-[flex="6"] { @include box-flex(6); }
-[flex="7"] { @include box-flex(7); }
-[flex="8"] { @include box-flex(8); }
-[flex="9"] { @include box-flex(9); }
