@@ -36,6 +36,18 @@ pages, like so:
 
 Look at the [demos][4] for some usage examples (more to come).
 
+How it works
+------------
+
+All the layouting is done via CSS, that is: no Javascript is involved in the
+layouting, so it is super-fast and lightweight.
+
+Angular Layout is built on top of Flexbox (currently a W3C Candidate
+Recommandation) and aims to make it easier for angular developers to leverage
+its power and flexibility. Read more about Flexbox [here][5].
+
+[5]: <http://css-tricks.com/snippets/css/a-guide-to-flexbox/>
+
 Browser support
 ---------------
 
