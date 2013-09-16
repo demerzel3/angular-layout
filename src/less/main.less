@@ -74,11 +74,11 @@
   .box-pack(start);
   .box-align(stretch);
 
-  &[align="stretch"] { .box-align(stretch); }
-  &[align="center"] { .box-align(center); }
-  &[align="start"] { .box-align(start); }
-  &[align="end"] { .box-align(end); }
-  &[align="baseline"] { .box-align(baseline); }
+  &[align-items="stretch"] { .box-align(stretch); }
+  &[align-items="center"] { .box-align(center); }
+  &[align-items="start"] { .box-align(start); }
+  &[align-items="end"] { .box-align(end); }
+  &[align-items="baseline"] { .box-align(baseline); }
 
   &[pack="start"] { .box-pack(start); }
   &[pack="end"] { .box-pack(end); }
@@ -169,4 +169,37 @@
   &[gap="18px"] { .box-vertical-gap(18px); }
   &[gap="19px"] { .box-vertical-gap(19px); }
   &[gap="20px"] { .box-vertical-gap(20px); }
+}
+
+// debug info
+.hbox[debug="true"],
+.vbox[debug="true"] {
+
+  @debug-color: #00a8ff;
+
+  padding: 15px;
+  border: solid 1px @debug-color;
+  position: relative;
+
+  & > .debug-info {
+    position: absolute;
+    background-color: @debug-color;
+    left: 0;
+    top: 0;
+    color: white;
+    padding: 0 10px;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+      opacity: 1;
+      z-index: 100;
+    }
+    & > span {
+      display: none;
+      color: lighten(@debug-color, 40%);
+    }
+    &:hover > span {
+      display: inline;
+    }
+  }
 }

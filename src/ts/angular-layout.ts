@@ -4,30 +4,47 @@
 
 module ng.layout {
 
-  function VBox():ng.IDirective {
-    return {
-      restrict: "E",
-      link: (scope:ng.IScope, el:JQuery, attrs:Object) => el.addClass("vbox")
-    }
-  }
+  function BoxFactory(layoutName:string) {
+    return function():ng.IDirective {
+      return {
+        restrict: "E",
+        template: [
+          '<div>',
+          '  <div ng-if="debug==\'true\'" class="debug-info">',
+          '    {{layout}}',
+          '    <span ng-if="pack">pack={{pack}}</span>',
+          '    <span ng-if="!pack">pack=start</span>',
+          '    <span ng-if="alignItems">align-items={{alignItems}}</span>',
+          '    <span ng-if="!alignItems">align-items=stretch</span>',
+          '    <span ng-if="gap">gap={{gap}}</span>',
+          '    <span ng-if="!gap">gap=8px</span>',
+          '  </div>',
+          '</div>'
+        ].join(''),
+        transclude: true,
+        replace: true,
+        scope: {
+          debug: '@',
+          pack: '@',
+          alignItems: '@',
+          gap: '@'
+        },
 
-  function HBox():ng.IDirective {
-    return {
-      restrict: "E",
-      link: (scope:ng.IScope, el:JQuery, attrs:Object) => el.addClass("hbox")
-    }
-  }
+        controller: ['$scope', '$element', '$transclude', function($scope:any, $element:JQuery, $transclude:Function) {
+          // The custom transclude is necessary to not mess with scopes:
+          // the template gets linked in the directive scope (so it gets access to the layout info)
+          // whilst the transcluded elements are linked to the outer scope.
+          $transclude(function(clone:JQuery) {
+            $element.append(clone);
+          });
+        }],
 
-  function Layout():ng.IDirective {
-    return {
-      restrict: "E",
-      link: function(scope:ng.IScope, el:JQuery, attrs:Object) {
-
-        if (_.contains(["hbox", "vbox"], attrs["layout"])) {
-          el.addClass(attrs["layout"].toString());
+        link: function(scope:any, el:JQuery, attrs:any) {
+          el.addClass(layoutName);
+          scope.layout = layoutName;
         }
       }
-    }
+    };
   }
 
   function PaddingFactory(side:string) {
@@ -53,16 +70,16 @@ module ng.layout {
       ].join(''),
       transclude: true,
       /*
-      controller: ['$scope', function($scope:ng.IScope) {
-        $scope.viewportLayout = null;
-        return {
-          setViewportLayout: function(layout) {
-            $scope.viewportLayout = layout;
-            console.log("setting viewport layout to ", layout);
-          }
-        };
-      }],
-      */
+       controller: ['$scope', function($scope:ng.IScope) {
+       $scope.viewportLayout = null;
+       return {
+       setViewportLayout: function(layout) {
+       $scope.viewportLayout = layout;
+       console.log("setting viewport layout to ", layout);
+       }
+       };
+       }],
+       */
       link: function(scope:ng.IScope, el:JQuery, attrs:Object) {
         console.log("Running scrollable linking function");
         //if (attrs.scrollable == "true") {
@@ -72,13 +89,13 @@ module ng.layout {
         el.addClass("scrollbox");
 
         /*
-        scope.$watch("viewportLayout", function(layout) {
-          console.log("viewportLayout changed to", layout);
-          if (layout != null) {
-            el.find("scroll-viewport").addClass(layout);
-          }
-        });
-        */
+         scope.$watch("viewportLayout", function(layout) {
+         console.log("viewportLayout changed to", layout);
+         if (layout != null) {
+         el.find("scroll-viewport").addClass(layout);
+         }
+         });
+         */
       }
     }
   }
@@ -92,9 +109,8 @@ module ng.layout {
     layout.directive("paddingRight", PaddingFactory("right"));
     layout.directive("paddingTop", PaddingFactory("top"));
     layout.directive("paddingBottom", PaddingFactory("bottom"));
-    layout.directive("hbox", HBox);
-    layout.directive("vbox", VBox);
-    layout.directive("layout", Layout);
+    layout.directive("hbox", BoxFactory("hbox"));
+    layout.directive("vbox", BoxFactory("vbox"));
     layout.directive("scrollable", Scrollable);
 
     return layout;

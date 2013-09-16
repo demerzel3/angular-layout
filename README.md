@@ -10,9 +10,6 @@ This library, although very simple, is experimental and has not yet been tested
 extensively. Please provide feedback if you notice a bug or misbehavior, and,
 anyway, **use at your own peril.**
 
-The main target of this library are mobile devices and modern browsers, old
-versions of IE are not taken into account at the current stage of development.
-
 Installation
 ------------
 
@@ -29,9 +26,33 @@ Add the module *ng.layout* to your application dependencies, like so:
 angular.module('myApp', ['ng.layout', ...])
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Don't forget to refer angular-layout.js and angular-layout.css in your page.
+Don't forget to refer angular-layout.js and angular-layout.css in your html
+pages, like so:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<script src="angular-layout.js"></script>
+<link rel="stylesheet" href="angular-layout.css"/>
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Look at the [demos][4] for some usage examples (more to come).
+
+Browser support
+---------------
+
+The main target of this library are mobile devices and modern browsers, old
+versions of IE are not taken into account at the current stage of development.
+
+The demos have been tested and found working in:
+
+-   Safari on iPad
+
+-   Chrome on iPad
+
+-   Chrome on Mac OS
+
+-   Firefox on Mac OS
+
+-   Safari on Mac OS
 
 [4]: <https://github.com/demerzel3/angular-layout/tree/master/demos>
 

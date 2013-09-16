@@ -243,7 +243,7 @@ module.exports = function ( grunt ) {
        */
       less: {
         files: [ 'src/**/*.less' ],
-        tasks: [ 'recess:build', 'recess:compile' ]
+        tasks: [ 'recess:build', 'recess:compile', 'copy:compile_assets' ]
       }
     }
   };

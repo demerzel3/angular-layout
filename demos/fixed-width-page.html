@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fixed Width Page Demo - Angular Layout</title>
+
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css"/>
+  <link rel="stylesheet" href="../dist/angular-layout.css"/>
+
+  <style type="text/css">
+    body {
+      margin: 20px;
+    }
+    #root {
+      width: 100%;
+    }
+    #wrapper {
+      width: 920px;
+    }
+    .sidebar {
+      background-color: #e6e6e6;
+      padding: 5px;
+    }
+    .sidebar.sidebar-fixed {
+      width: 150px;
+    }
+    .sidebar.sidebar-percent {
+      width: 20%;
+    }
+  </style>
+</head>
+
+<body ng-app="ng.layout" ng-controller="DemoCtrl">
+
+<hbox debug="{{debugLayout}}" id="root" pack="center">
+  <vbox debug="{{debugLayout}}" id="wrapper">
+
+    <hbox id="header" debug="{{debugLayout}}" pack="center" align-items="center">
+      <div flex="1">
+        <h1>First Title</h1>
+        <h2>Second Title</h2>
+      </div>
+
+      <div>
+        <h4>Vertical aligned box</h4>
+        <button type="button" class="btn btn-primary" ng-click="toggleGap()">Toggle article gap</button>
+        <button type="button" class="btn btn-default" ng-class="{'active': debugLayout}" ng-click="toggleDebugLayout()">Debug layout</button>
+      </div>
+    </hbox>
+
+    <hbox debug="{{debugLayout}}" align-items="stretch">
+
+      <div class="sidebar sidebar-fixed">
+        <h4>Sidebar 150px</h4>
+      </div>
+      <vbox flex="1" debug="{{debugLayout}}" gap="{{vboxGap}}px">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque cursus erat vitae tortor vulputate tempor. Sed eget eros at risus tincidunt elementum non vel nisl. Curabitur nec vestibulum eros, gravida pretium tellus. Vestibulum commodo viverra magna et sagittis. Mauris ut vestibulum justo. Praesent quis erat eu nunc adipiscing venenatis eget a lorem. Donec a vehicula metus, in bibendum enim. Fusce in mauris vitae ligula dignissim blandit in quis ligula. Proin turpis dolor, pellentesque eu mi eget, pulvinar lobortis ante. Morbi sem nibh, vulputate quis scelerisque sit amet, sagittis lacinia odio. Nullam ut dapibus sem, eu aliquam nulla. Suspendisse ut risus hendrerit, sollicitudin ipsum vel, pharetra leo.</p>
+        <p>Praesent blandit auctor dui, quis elementum justo venenatis in. Ut iaculis vulputate elit, at convallis diam vestibulum aliquam. Cras porta tempus congue. Phasellus nec orci libero. Integer ut velit lobortis, suscipit arcu in, varius risus. Aenean ultrices eros nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque eget tortor ac magna convallis suscipit.</p>
+        <p>Nullam et nisi eget ligula feugiat molestie. Vivamus eu sem vel lorem cursus porttitor. Quisque orci quam, molestie eget imperdiet id, blandit sit amet purus. In in elementum nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc blandit bibendum augue id condimentum. Aenean iaculis pellentesque justo, a bibendum felis lacinia in. Sed cursus et tortor eu fringilla. Morbi gravida ullamcorper erat, eget congue lorem ullamcorper vel. Phasellus et euismod urna. Aliquam erat volutpat. Vestibulum adipiscing, quam non aliquam interdum, magna diam accumsan nulla, eu lobortis mauris nulla non mauris. Praesent lobortis molestie aliquam.</p>
+        <p>Proin fringilla lacus eget tellus ultricies, eu pretium elit gravida. Donec vitae augue urna. Quisque imperdiet lorem nec sagittis tristique. Phasellus egestas viverra lectus, at malesuada est cursus laoreet. Praesent non nibh eu eros hendrerit molestie. Etiam vulputate consequat pretium. Nam viverra libero libero, vel ultrices magna mollis ac. Duis volutpat nunc ut enim pretium, ut vestibulum justo vulputate. Morbi a odio feugiat, venenatis justo nec, condimentum tellus.</p>
+        <p>Sed non ultricies enim, at dapibus quam. Mauris placerat mattis eros, id porttitor mauris mattis sit amet. Fusce lacus sem, consequat vitae venenatis eu, gravida nec risus. Duis id tempor lorem. Phasellus quis hendrerit augue. Duis ut urna non nunc imperdiet ultrices in at risus. Morbi tempus elit vel lacus ullamcorper auctor. Morbi mattis auctor consequat. Donec feugiat tincidunt tellus sed dignissim. Fusce imperdiet erat ante, mattis cursus sem tristique non. Cras eget congue elit, eu eleifend dolor. Aliquam quis tincidunt enim. In vel lacus in odio rhoncus euismod quis nec libero. Morbi tincidunt, mi ultrices eleifend auctor, ligula enim lacinia diam, eget aliquet tellus est nec elit. Mauris id libero ullamcorper, interdum felis id, luctus neque.</p>
+      </vbox>
+      <div class="sidebar sidebar-percent">
+        <h4>Sidebar 20%</h4>
+      </div>
+
+    </hbox>
+
+  </vbox>
+</hbox>
+
+<script src="../vendor/angular/angular.js"></script>
+<script src="../dist/angular-layout.js"></script>
+
+<script>
+
+  (function() {
+    var DemoCtrl = function($scope) {
+
+      $scope.vboxGap = 5;
+      $scope.debugLayout = true;
+      $scope.toggleGap = function() {
+        if ($scope.vboxGap === 5) {
+          $scope.vboxGap = 20;
+        } else {
+          $scope.vboxGap = 5;
+        }
+      };
+      $scope.toggleDebugLayout = function() {
+        $scope.debugLayout = !$scope.debugLayout;
+      };
+
+    };
+
+    window.DemoCtrl = DemoCtrl;
+  })();
+
+</script>
+
+</body>
+</html>

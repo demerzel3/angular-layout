@@ -1,5 +1,5 @@
 /**
- * angular-layout - v0.0.1 - 2013-09-15
+ * angular-layout - v0.0.1 - 2013-09-16
  * https://github.com/demerzel3/angular-layout
  *
  * Copyright (c) 2013 Gabriele Genta
@@ -8,32 +8,46 @@
 var ng;
 (function (ng) {
     (function (layout) {
-        function VBox() {
-            return {
-                restrict: "E",
-                link: function (scope, el, attrs) {
-                    return el.addClass("vbox");
-                }
-            };
-        }
-
-        function HBox() {
-            return {
-                restrict: "E",
-                link: function (scope, el, attrs) {
-                    return el.addClass("hbox");
-                }
-            };
-        }
-
-        function Layout() {
-            return {
-                restrict: "E",
-                link: function (scope, el, attrs) {
-                    if (_.contains(["hbox", "vbox"], attrs["layout"])) {
-                        el.addClass(attrs["layout"].toString());
+        function BoxFactory(layoutName) {
+            return function () {
+                return {
+                    restrict: "E",
+                    template: [
+                        '<div>',
+                        '  <div ng-if="debug==\'true\'" class="debug-info">',
+                        '    {{layout}}',
+                        '    <span ng-if="pack">pack={{pack}}</span>',
+                        '    <span ng-if="!pack">pack=start</span>',
+                        '    <span ng-if="alignItems">align-items={{alignItems}}</span>',
+                        '    <span ng-if="!alignItems">align-items=stretch</span>',
+                        '    <span ng-if="gap">gap={{gap}}</span>',
+                        '    <span ng-if="!gap">gap=8px</span>',
+                        '  </div>',
+                        '</div>'
+                    ].join(''),
+                    transclude: true,
+                    replace: true,
+                    scope: {
+                        debug: '@',
+                        pack: '@',
+                        alignItems: '@',
+                        gap: '@'
+                    },
+                    controller: [
+                        '$scope',
+                        '$element',
+                        '$transclude',
+                        function ($scope, $element, $transclude) {
+                            $transclude(function (clone) {
+                                $element.append(clone);
+                            });
+                        }
+                    ],
+                    link: function (scope, el, attrs) {
+                        el.addClass(layoutName);
+                        scope.layout = layoutName;
                     }
-                }
+                };
             };
         }
 
@@ -77,9 +91,8 @@ var ng;
             layout.directive("paddingRight", PaddingFactory("right"));
             layout.directive("paddingTop", PaddingFactory("top"));
             layout.directive("paddingBottom", PaddingFactory("bottom"));
-            layout.directive("hbox", HBox);
-            layout.directive("vbox", VBox);
-            layout.directive("layout", Layout);
+            layout.directive("hbox", BoxFactory("hbox"));
+            layout.directive("vbox", BoxFactory("vbox"));
             layout.directive("scrollable", Scrollable);
 
             return layout;
