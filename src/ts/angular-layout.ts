@@ -1,6 +1,5 @@
 /// <reference path="../../tsd/DefinitelyTyped/angularjs/angular.d.ts" />
 /// <reference path="../../tsd/DefinitelyTyped/jquery/jquery.d.ts" />
-/// <reference path="../../tsd/DefinitelyTyped/underscore/underscore.d.ts" />
 
 module ng.layout {
 

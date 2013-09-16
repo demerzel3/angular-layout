@@ -1,9 +1,8 @@
 {
   "name": "angular-layout",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "devDependencies": {
     "angular": "~1.2.0",
-    "underscore": "~1.5.2",
     "bootstrap": "~3.*"
   },
   "dependencies": {}
