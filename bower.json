@@ -1,6 +1,10 @@
 {
   "name": "angular-layout",
   "version": "0.0.2",
+  "main": [
+    "dist/angular-layout.css",
+    "dist/angular-layout.js"
+  ],
   "devDependencies": {
     "angular": "~1.2.0",
     "bootstrap": "~3.*"
