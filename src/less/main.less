@@ -4,6 +4,10 @@
   -ms-box-orient: @orient;
   box-orient: @orient;
 }
+.box-justify-content(@justify) {
+  -webkit-justify-content: @justify;
+  justify-content: @justify;
+}
 .box() {
   display: -webkit-box;
   display: -moz-box;
@@ -28,6 +32,11 @@
   -ms-box-flex: @flex;
   box-flex: @flex;
 }
+
+.box-shrink(@shrink) {
+  flex-shrink: @shrink;
+}
+
 .box-horizontal-gap(@gap) {
   & > * { margin-right: @gap; }
   & > :last-child { margin-right: 0; }
@@ -79,11 +88,14 @@
   &[align-items="start"] { .box-align(start); }
   &[align-items="end"] { .box-align(end); }
   &[align-items="baseline"] { .box-align(baseline); }
-
   &[pack="start"] { .box-pack(start); }
   &[pack="end"] { .box-pack(end); }
   &[pack="center"] { .box-pack(center); }
   &[pack="justify"] { .box-pack(justify); }
+  &[justify-content="flex-start"] { .box-justify-content(flex-start); }
+  &[justify-content="flex-end"] { .box-justify-content(flex-end); }
+  &[justify-content="space-between"] { .box-justify-content(space-between); }
+  &[justify-content="space-around"] { .box-justify-content(space-around); }
 
   & > * {
     display: block;
@@ -110,6 +122,28 @@
     &[flex="18"] { .box-flex(18); }
     &[flex="19"] { .box-flex(19); }
     &[flex="20"] { .box-flex(20); }
+
+    &[shrink="1"] { .box-shrink(1); }
+    &[shrink="2"] { .box-shrink(2); }
+    &[shrink="3"] { .box-shrink(3); }
+    &[shrink="4"] { .box-shrink(4); }
+    &[shrink="5"] { .box-shrink(5); }
+    &[shrink="6"] { .box-shrink(6); }
+    &[shrink="7"] { .box-shrink(7); }
+    &[shrink="8"] { .box-shrink(8); }
+    &[shrink="9"] { .box-shrink(9); }
+    &[shrink="10"] { .box-shrink(10); }
+    &[shrink="11"] { .box-shrink(11); }
+    &[shrink="12"] { .box-shrink(12); }
+    &[shrink="13"] { .box-shrink(13); }
+    &[shrink="14"] { .box-shrink(14); }
+    &[shrink="15"] { .box-shrink(15); }
+    &[shrink="16"] { .box-shrink(16); }
+    &[shrink="17"] { .box-shrink(17); }
+    &[shrink="18"] { .box-shrink(18); }
+    &[shrink="19"] { .box-shrink(19); }
+    &[shrink="20"] { .box-shrink(20); }
+
   }
 
   & > .hbox,
