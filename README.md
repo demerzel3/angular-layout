@@ -3,7 +3,7 @@ Angular Layout
 
 Angular Layout is a collection of directives written in [angular][2], to
 simplify building of full-page layouts. It is inspired by Apache Flex (formerly
-Adobe Flex) way of defining layout by means of declarative xml elements and
+Adobe Flex) and Java Swing way of defining layout by means of declarative xml elements and
 related attributes.
 
 This library, although very simple, is experimental and has not yet been tested
@@ -20,10 +20,10 @@ for your next project.
 Usage
 -----
 
-Add the module *ng.layout* to your application dependencies, like so:
+Add the module *angular-layout* to your application dependencies, like so:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-angular.module('myApp', ['ng.layout', ...])
+angular.module('myApp', ['angular-layout', ...])
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Don't forget to refer angular-layout.js and angular-layout.css in your html

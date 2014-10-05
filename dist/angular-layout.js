@@ -1,104 +1,62 @@
 /**
- * angular-layout - v0.0.1 - 2013-09-16
+ * angular-layout - v0.0.2 - 2014-10-05
  * https://github.com/demerzel3/angular-layout
  *
- * Copyright (c) 2013 Gabriele Genta
+ * Copyright (c) 2014
+ * Authors : Gabriele Genta & Martin Mouterde
  * Licensed MIT <>
  */
-var ng;
-(function (ng) {
-    (function (layout) {
-        function BoxFactory(layoutName) {
-            return function () {
-                return {
-                    restrict: "E",
-                    template: [
-                        '<div>',
-                        '  <div ng-if="debug==\'true\'" class="debug-info">',
-                        '    {{layout}}',
-                        '    <span ng-if="pack">pack={{pack}}</span>',
-                        '    <span ng-if="!pack">pack=start</span>',
-                        '    <span ng-if="alignItems">align-items={{alignItems}}</span>',
-                        '    <span ng-if="!alignItems">align-items=stretch</span>',
-                        '    <span ng-if="gap">gap={{gap}}</span>',
-                        '    <span ng-if="!gap">gap=8px</span>',
-                        '  </div>',
-                        '</div>'
-                    ].join(''),
-                    transclude: true,
-                    replace: true,
-                    scope: {
-                        debug: '@',
-                        pack: '@',
-                        alignItems: '@',
-                        gap: '@'
-                    },
-                    controller: [
-                        '$scope',
-                        '$element',
-                        '$transclude',
-                        function ($scope, $element, $transclude) {
-                            $transclude(function (clone) {
-                                $element.append(clone);
-                            });
-                        }
-                    ],
-                    link: function (scope, el, attrs) {
-                        el.addClass(layoutName);
-                        scope.layout = layoutName;
-                    }
-                };
+(function () {
+    'use strict';
+    var angularLayoutModule = angular.module("angular-layout", []);
+
+    angularLayoutModule.directive("solid", function () {
+        return {
+            restrict: "E",
+            scope: {size: "@"},
+            replace: true,
+            template: '<div class="solid" grow="20" shrink="0" ng-style="{\'max-height\':size,\'max-width\':size}"></div>'
+        };
+    });
+
+    angularLayoutModule.directive("glue", function () {
+        return {
+            restrict: "E",
+            replace: true,
+            template: '<div grow="20" shrink="20" class="flexbox glue"></div>'
+        };
+    });
+
+    var directiveFactory = function (directiveName,direction, suffix) {
+        angularLayoutModule.directive(directiveName + suffix, function () {
+            return {
+                restrict: "E",
+                replace: true,
+                transclude: true,
+                template: '<div class="flexbox" direction' + suffix + '="'+direction+'" ng-transclude></div>'
             };
-        }
-
-        function PaddingFactory(side) {
-            var paddingSide = "padding" + side.substr(0, 1).toUpperCase() + side.substr(1).toLowerCase();
-
-            return function () {
-                return {
-                    restrict: "A",
-                    link: function (scope, el, attrs) {
-                        el.css(paddingSide, attrs[paddingSide]);
-                    }
-                };
-            };
-        }
-
-        function Scrollable() {
+        });
+        angularLayoutModule.directive("vbox", function () {
             return {
                 restrict: "A",
-                template: [
-                    '<div class="scroll-viewport">',
-                    '  <div ng-transclude></div>',
-                    '</div>'
-                ].join(''),
-                transclude: true,
-                link: function (scope, el, attrs) {
-                    console.log("Running scrollable linking function");
-
-                    el.bind("touchmove", function (e) {
-                        e.stopImmediatePropagation();
-                    });
-                    el.addClass("scrollbox");
+                link: function (scope, element) {
+                    element.attr("direction" + suffix, "column");
+                    element.addClass("flexbox");
                 }
             };
-        }
+        });
+    };
 
-        function init() {
-            var layout = angular.module("ng.layout", []);
+    directiveFactory("hbox","row","");
+    directiveFactory("hbox-xs","row","-xs");
+    directiveFactory("hbox-sm","row","-sm");
+    directiveFactory("hbox-md","row","-md");
+    directiveFactory("hbox-lg","row","-lg");
 
-            layout.directive("paddingLeft", PaddingFactory("left"));
-            layout.directive("paddingRight", PaddingFactory("right"));
-            layout.directive("paddingTop", PaddingFactory("top"));
-            layout.directive("paddingBottom", PaddingFactory("bottom"));
-            layout.directive("hbox", BoxFactory("hbox"));
-            layout.directive("vbox", BoxFactory("vbox"));
-            layout.directive("scrollable", Scrollable);
+    directiveFactory("vbox","column","");
+    directiveFactory("vbox-xs","column","-md");
+    directiveFactory("vbox-sm","column","-md");
+    directiveFactory("vbox-md","column","-md");
+    directiveFactory("vbox-lg","column","-lg");
 
-            return layout;
-        }
-
-        init();
-    })(ng.layout || (ng.layout = {}));
-    var layout = ng.layout;
-})(ng || (ng = {}));
+})();
