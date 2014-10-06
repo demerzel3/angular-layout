@@ -1,14 +1,14 @@
 
 @directionValues: row, row-reverse, column, column-reverse;
 @alignItemsValues: baseline, center, flex-end, flex-start, stretch;
-@JustifyContentValues: center, flex-end, flex-start, space-around, space-around;
+@JustifyContentValues: center, flex-end, flex-start, space-around, space-between;
 @alignContentValues: center, flex-end, flex-start;
 @wrapValues: nowrap, wrap, wrap-reverse;
-@screenFormat: xs, sm, md, lg;
-@media-xs: ~"only screen and (min-width : 480px)";
-@media-sm: ~"only screen and (min-width : 768px)";
-@media-md: ~"only screen and (min-width : 992px)";
-@media-lg: ~"only screen and (min-width : 1200px)";
+@screenFormat: lg, md, sm, xs;
+@media-xs: ~"only screen and (max-width : 480px)";
+@media-sm: ~"only screen and (min-width : 481px) and (max-width : 768px)";
+@media-md: ~"only screen and (min-width: 769px) and (max-width : 992px)";
+@media-lg: ~"only screen and (min-width: 993px) and(max-width : 1200px)";
 @medias : @media-lg, @media-md, @media-sm,  @media-xs;
 @glueGrowShrink: 99;
 
@@ -24,7 +24,7 @@
   //add align attr style
   .mixin_attrValueAsStyle(@alignItemsValues,align,align-items);
   //add xJustify attr style
-  .mixin_attrValueAsStyle(@alignContentValues,xJustify,align-content);
+  .mixin_attrValueAsStyle(@alignContentValues,x-justify,align-content);
   //add wrap attr style
   .mixin_attrValueAsStyle(@wrapValues,wrap,flex-wrap);
   //add orientation attr style
@@ -32,9 +32,15 @@
   //add grow attr style
   .mixin_attrValueAsIntStyle(20,grow,flex-grow,'');
   //add shrink attr style
-  .mixin_attrValueAsIntStyle(20,grow,flex-shrink,'');
+  .mixin_attrValueAsIntStyle(20,shrink,flex-shrink,'');
   //add order attr style
   .mixin_attrValueAsIntStyle(20,order,order,'');
+  //add grow attr style
+  .mixin_childAttrValueAsIntStyle(20,grow,flex-grow,'');
+  //add shrink attr style
+  .mixin_childAttrValueAsIntStyle(20,shrink,flex-shrink,'');
+  //add order attr style
+  .mixin_childAttrValueAsIntStyle(20,order,order,'');
 
   .responsive_flexbox();
 }
@@ -49,7 +55,14 @@
 
 .mixin_attrValueAsIntStyle(@nb,@attributeName,@styleName,@unit) {
   .-(@i: @nb) when (@i >= 0) {
-  &[@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
+  & [@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
+  .-((@i - 1));
+} .-;
+}
+
+.mixin_childAttrValueAsIntStyle(@nb,@attributeName,@styleName,@unit) {
+  .-(@i: @nb) when (@i >= 0) {
+  & > * [@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
   .-((@i - 1));
 } .-;
 }
@@ -69,7 +82,7 @@
   //add align attr style
   .mixin_attrValueAsStyle(@alignItemsValues,e(%("align-%a",@suffix)),align-items);
   //add xJustify attr style
-  .mixin_attrValueAsStyle(@alignContentValues,e(%("xJustify-%a",@suffix)),align-content);
+  .mixin_attrValueAsStyle(@alignContentValues,e(%("x-justify-%a",@suffix)),align-content);
   //add wrap attr style
   .mixin_attrValueAsStyle(@wrapValues,e(%("wrap-%a",@suffix)),flex-wrap);
   //add orientation attr style
@@ -80,4 +93,10 @@
   .mixin_attrValueAsIntStyle(20,e(%("shrink-%a",@suffix)),flex-shrink,'');
   //add order attr style
   .mixin_attrValueAsIntStyle(20,e(%("order-%a",@suffix)),order,'');
+  //add grow attr style
+  .mixin_childAttrValueAsIntStyle(20,e(%("grow-%a",@suffix)),flex-grow,'');
+  //add shrink attr style
+  .mixin_childAttrValueAsIntStyle(20,e(%("shrink-%a",@suffix)),flex-shrink,'');
+  //add order attr style
+  .mixin_childAttrValueAsIntStyle(20,e(%("order-%a",@suffix)),order,'');
 }

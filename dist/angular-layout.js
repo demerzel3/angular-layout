@@ -1,5 +1,5 @@
 /**
- * angular-layout - v0.0.2 - 2014-10-05
+ * angular-layout - v0.1.0 - 2014-10-06
  * https://github.com/demerzel3/angular-layout
  *
  * Copyright (c) 2014
@@ -8,14 +8,14 @@
  */
 (function () {
     'use strict';
-    var angularLayoutModule = angular.module("angular-layout", []);
+    var angularLayoutModule = angular.module("angular.layout", []);
 
     angularLayoutModule.directive("solid", function () {
         return {
             restrict: "E",
             scope: {size: "@"},
             replace: true,
-            template: '<div class="solid" grow="20" shrink="0" ng-style="{\'max-height\':size,\'max-width\':size}"></div>'
+            template: '<div class="solid" grow="20" shrink="0" ng-style="{\'max-height\':size,\'max-width\':size,\'flex-basis\':size}"></div>'
         };
     });
 
@@ -28,35 +28,36 @@
     });
 
     var directiveFactory = function (directiveName,direction, suffix) {
-        angularLayoutModule.directive(directiveName + suffix, function () {
+        angularLayoutModule.directive(directiveName, function () {
             return {
                 restrict: "E",
                 replace: true,
                 transclude: true,
-                template: '<div class="flexbox" direction' + suffix + '="'+direction+'" ng-transclude></div>'
+                template: '<div class="flexbox '+directiveName +'" direction' + suffix + '="'+direction+'" ng-transclude></div>'
             };
         });
-        angularLayoutModule.directive("vbox", function () {
+        angularLayoutModule.directive(directiveName, function () {
             return {
                 restrict: "A",
                 link: function (scope, element) {
-                    element.attr("direction" + suffix, "column");
+                    element.attr("direction" + suffix, direction);
                     element.addClass("flexbox");
+                    element.addClass(directiveName);
                 }
             };
         });
     };
 
     directiveFactory("hbox","row","");
-    directiveFactory("hbox-xs","row","-xs");
-    directiveFactory("hbox-sm","row","-sm");
-    directiveFactory("hbox-md","row","-md");
-    directiveFactory("hbox-lg","row","-lg");
+    directiveFactory("hboxXs","row","-xs");
+    directiveFactory("hboxSm","row","-sm");
+    directiveFactory("hboxMd","row","-md");
+    directiveFactory("hboxLg","row","-lg");
 
     directiveFactory("vbox","column","");
-    directiveFactory("vbox-xs","column","-md");
-    directiveFactory("vbox-sm","column","-md");
-    directiveFactory("vbox-md","column","-md");
-    directiveFactory("vbox-lg","column","-lg");
+    directiveFactory("vboxXs","column","-xs");
+    directiveFactory("vboxSm","column","-sm");
+    directiveFactory("vboxMd","column","-md");
+    directiveFactory("vboxLg","column","-lg");
 
 })();

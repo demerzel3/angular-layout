@@ -1,9 +1,9 @@
 {
   "name": "angular-layout",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": [
-    "dist/angular-layout.min.css",
-    "dist/angular-layout.min.js"
+    "dist/angular-layout.css",
+    "dist/angular-layout.js"
   ],
   "devDependencies": {},
   "dependencies": {}
