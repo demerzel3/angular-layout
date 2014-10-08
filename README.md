@@ -121,7 +121,7 @@ v0.1.0 Breaking changes
 
 Release History
 ==================
- * 2014-10-06       v0.1.0  upgrate to Angular 1.2.26, Flexbox [pre RC on 25 September 2014 spec][6]. no dependencies. refactoring. autoprefixed.
+ * 2014-10-06       v0.1.0 (in progress) upgrate to Angular 1.2.26, Flexbox [pre RC on 25 September 2014 spec][6]. no dependencies. refactoring. autoprefixed.
  * 2013-09-16       v0.0.2  remove underscore, meteor dependencies
  * 2013-09-15       v0.0.1  using Angular 1.1.5 Bootstrap 3, Flexbox 1999 spec
 
