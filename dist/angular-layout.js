@@ -1,5 +1,5 @@
 /**
- * angular-layout - v0.1.0 - 2014-10-06
+ * angular-layout - v0.1.0 - 2014-10-08
  * https://github.com/demerzel3/angular-layout
  *
  * Copyright (c) 2014
@@ -15,7 +15,7 @@
             restrict: "E",
             scope: {size: "@"},
             replace: true,
-            template: '<div class="solid" grow="20" shrink="0" ng-style="{\'max-height\':size,\'max-width\':size,\'flex-basis\':size}"></div>'
+            template: '<div class="flexbox solid" grow="20" shrink="0" ng-style="{\'max-height\':size,\'max-width\':size,\'flex-basis\':size}"></div>'
         };
     });
 

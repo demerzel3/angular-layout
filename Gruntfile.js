@@ -36,7 +36,7 @@ module.exports = function (grunt) {
                         ' * <%= pkg.homepage %>\n' +
                         ' *\n' +
                         ' * Copyright (c) <%= grunt.template.today("yyyy") %>\n' +
-                        ' * Authors : Gabriele Genta & Martin Mouterde\n'+
+                        ' * Authors : Gabriele Genta & Martin Mouterde\n' +
                         ' * Licensed <%= pkg.licenses.type %> <<%= pkg.licenses.url %>>\n' +
                         ' */'
                 },
@@ -80,16 +80,28 @@ module.exports = function (grunt) {
         },
         cssmin: {
             dist: {
-                files: {
-                    'dist/angular-layout.min.css': ['dist/angular-layout.css']
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'dist',
+                        src: ['*.css'],
+                        dest: 'dist',
+                        ext: '.min.css'
+                    }
+                ]
             }
         },
         less: {
             dev: {
-                files: {
-                    "dist/angular-layout.css": "src/less/angular-layout.less"
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/less',
+                        src: ['*.less'],
+                        dest: 'dist',
+                        ext: '.css'
+                    }
+                ]
             }
         }
     });

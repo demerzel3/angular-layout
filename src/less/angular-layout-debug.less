@@ -1,0 +1,86 @@
+.vbox > .flexboxDebug.glue,
+.hbox > .flexboxDebug.glue {
+  height: 1px;
+  display: block;
+  border-style: dotted;
+  border-width: thin;
+  border-color: rgb(174, 219, 219);
+}
+
+.vbox > .flexboxDebug.glue:after,
+.hbox > .flexboxDebug.glue:after {
+  content: "\2192";
+  font-size: 24px;
+  float: right;
+  position: relative;
+  top: -19px;
+  right: -4px;
+  color: rgb(174, 219, 219);
+}
+.vbox > .flexboxDebug.glue:before,
+.hbox > .flexboxDebug.glue:before {
+  content: "\2190";
+  font-size: 24px;
+  float: left;
+  position: relative;
+  top: -19px;
+  left: -4px;
+  color: rgb(174, 219, 219);
+}
+
+.vbox > .flexboxDebug.solid,
+.hbox > .flexboxDebug.solid {
+  border: 3px double;
+  border-color: black;
+}
+
+.vbox > .flexboxDebug.solid:before,
+.hbox > .flexboxDebug.solid:before {
+  content: attr(size);
+}
+
+.hbox.flexboxDebug{
+  .mixin_gap_h_debug(20);
+}
+.vbox.flexboxDebug{
+  .mixin_gap_v_debug(20);
+}
+
+.vbox.flexboxDebug:before,
+.hbox.flexboxDebug:before {
+  content: attr(debugLabel);
+  z-index: 10;
+  position: absolute;
+  background-color: azure;
+}
+
+.vbox.flexboxDebug,
+.hbox.flexboxDebug {
+  border-style: dashed;
+  border-width: thin;
+  border-color: rgb(174, 219, 219);
+}
+
+.mixin_gap_h_debug(@nb) {
+  .-(@i: @nb) when (@i > 0) {
+  &[gap="@{i}"] > *:not(:last-child) {
+    border-right-width: e(%("%apx",@i));
+    border-right-color: red;
+    border-right-style: inset;
+    margin-right: 0;
+  }
+  .-((@i - 1));
+} .-;
+}
+
+.mixin_gap_v_debug(@nb) {
+  .-(@i: @nb) when (@i > 0) {
+  &[gap="@{i}"] > *:not(:last-child) {
+    border-bottom-width: e(%("%apx",@i));
+    border-bottom-color: red;
+    border-bottom-style: inset;
+    margin-bottom: 0;
+  }
+  .-((@i - 1));
+} .-;
+}

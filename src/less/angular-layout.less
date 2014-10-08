@@ -17,6 +17,13 @@
   flex-shrink: @glueGrowShrink;
 }
 
+.hbox {
+  .mixin_gap(20,margin-right);
+}
+.vbox {
+  .mixin_gap(20,margin-bottom);
+}
+
 .flexbox {
   display: flex;
   //add justify attr style
@@ -41,8 +48,8 @@
   .mixin_childAttrValueAsIntStyle(20,shrink,flex-shrink,'');
   //add order attr style
   .mixin_childAttrValueAsIntStyle(20,order,order,'');
-
   .responsive_flexbox();
+
 }
 
 .mixin_attrValueAsStyle(@arrayValues,@attributeName,@styleName) {
@@ -55,7 +62,7 @@
 
 .mixin_attrValueAsIntStyle(@nb,@attributeName,@styleName,@unit) {
   .-(@i: @nb) when (@i >= 0) {
-  & [@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
+  &[@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
   .-((@i - 1));
 } .-;
 }
@@ -63,6 +70,27 @@
 .mixin_childAttrValueAsIntStyle(@nb,@attributeName,@styleName,@unit) {
   .-(@i: @nb) when (@i >= 0) {
   & > * [@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
+  .-((@i - 1));
+} .-;
+}
+
+
+.mixin_gap(@nb,@margin) {
+  .-(@i: @nb) when (@i >= 0) {
+  &[gap="@{i}"] > * {@{margin}: e(%("%apx",@i))}
+  &[gap="@{i}"] :last-child {@{margin}: 0; }
+  .-((@i - 1));
+} .-;
+}
+
+.mixin_gap_h_debug(@nb) {
+  .-(@i: @nb) when (@i >= 0) {
+  &[gap="@{i}"] > * {
+    border-right-width: e(%("%apx",@i));
+    border-right-color: red;
+    border-right-style: inset;
+    }
+  &[gap="@{i}"] :last-child {@{margin}: 0; }
   .-((@i - 1));
 } .-;
 }
