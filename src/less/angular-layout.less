@@ -37,11 +37,11 @@
   //add orientation attr style
   .mixin_attrValueAsStyle(@directionValues,direction,flex-direction);
   //add grow attr style
-  .mixin_attrValueAsIntStyle(20,grow,flex-grow,'');
+  //.mixin_attrValueAsIntStyle(20,grow,flex-grow,'');
   //add shrink attr style
-  .mixin_attrValueAsIntStyle(20,shrink,flex-shrink,'');
+  //.mixin_attrValueAsIntStyle(20,shrink,flex-shrink,'');
   //add order attr style
-  .mixin_attrValueAsIntStyle(20,order,order,'');
+  //.mixin_attrValueAsIntStyle(20,order,order,'');
   //add grow attr style
   .mixin_childAttrValueAsIntStyle(20,grow,flex-grow,'');
   //add shrink attr style
@@ -49,59 +49,58 @@
   //add order attr style
   .mixin_childAttrValueAsIntStyle(20,order,order,'');
   .responsive_flexbox();
-
 }
 
 .mixin_attrValueAsStyle(@arrayValues,@attributeName,@styleName) {
-  .-(@i: length(@arrayValues)) when (@i > 0) {
+  .loop(@i: length(@arrayValues)) when (@i > 0) {
     @name: e(extract(@arrayValues, @i));
     &[@{attributeName}="@{name}"] {@{styleName}: @name}
-    .-((@i - 1));
-  } .-;
+    .loop((@i - 1));
+  } .loop;
 }
 
 .mixin_attrValueAsIntStyle(@nb,@attributeName,@styleName,@unit) {
-  .-(@i: @nb) when (@i >= 0) {
-  &[@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
-  .-((@i - 1));
-} .-;
+  .loop(@i: @nb) when (@i >= 0) {
+    &[@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
+    .loop((@i - 1));
+  } .loop;
 }
 
 .mixin_childAttrValueAsIntStyle(@nb,@attributeName,@styleName,@unit) {
-  .-(@i: @nb) when (@i >= 0) {
-  & > * [@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
-  .-((@i - 1));
-} .-;
+  .loop(@i: @nb) when (@i >= 0) {
+    & > *[@{attributeName}="@{i}@{unit}"] {@{styleName}: @i e(@unit)}
+    .loop((@i - 1));
+  } .loop;
 }
 
 
 .mixin_gap(@nb,@margin) {
-  .-(@i: @nb) when (@i >= 0) {
-  &[gap="@{i}"] > * {@{margin}: e(%("%apx",@i))}
-  &[gap="@{i}"] :last-child {@{margin}: 0; }
-  .-((@i - 1));
-} .-;
+  .loop(@i: @nb) when (@i >= 0) {
+    &[gap="@{i}"] > * {@{margin}: e(%("%apx",@i))}
+    &[gap="@{i}"] :last-child {@{margin}: 0; }
+    .loop((@i - 1));
+  } .loop;
 }
 
 .mixin_gap_h_debug(@nb) {
-  .-(@i: @nb) when (@i >= 0) {
-  &[gap="@{i}"] > * {
-    border-right-width: e(%("%apx",@i));
-    border-right-color: red;
-    border-right-style: inset;
+  .loop(@i: @nb) when (@i >= 0) {
+    &[gap="@{i}"] > * {
+      border-right-width: e(%("%apx",@i));
+      border-right-color: red;
+      border-right-style: inset;
     }
-  &[gap="@{i}"] :last-child {@{margin}: 0; }
-  .-((@i - 1));
-} .-;
+    &[gap="@{i}"] :last-child {@{margin}: 0; }
+    .loop((@i - 1));
+  } .loop;
 }
 
 .responsive_flexbox() {
-  .-(@i: length(@screenFormat)) when (@i > 0) {
+  .loop(@i: length(@screenFormat)) when (@i > 0) {
     @aScreen: e(extract(@screenFormat, @i));
     @aMedia: e(extract(@medias, @i));
     @media @aMedia { .responsive_flexbox(@aScreen) }
-    .-((@i - 1));
-  } .-;
+    .loop((@i - 1));
+  } .loop;
 }
 
 .responsive_flexbox(@suffix) {
@@ -116,11 +115,11 @@
   //add orientation attr style
   .mixin_attrValueAsStyle(@directionValues,e(%("direction-%a",@suffix)),flex-direction);
   //add grow attr style
-  .mixin_attrValueAsIntStyle(20,e(%("grow-%a",@suffix)),flex-grow,'');
+  //.mixin_attrValueAsIntStyle(20,e(%("grow-%a",@suffix)),flex-grow,'');
   //add shrink attr style
-  .mixin_attrValueAsIntStyle(20,e(%("shrink-%a",@suffix)),flex-shrink,'');
+  //.mixin_attrValueAsIntStyle(20,e(%("shrink-%a",@suffix)),flex-shrink,'');
   //add order attr style
-  .mixin_attrValueAsIntStyle(20,e(%("order-%a",@suffix)),order,'');
+  //.mixin_attrValueAsIntStyle(20,e(%("order-%a",@suffix)),order,'');
   //add grow attr style
   .mixin_childAttrValueAsIntStyle(20,e(%("grow-%a",@suffix)),flex-grow,'');
   //add shrink attr style

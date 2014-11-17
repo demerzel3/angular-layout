@@ -1,5 +1,5 @@
 /**
- * angular-layout - v0.1.0 - 2014-10-08
+ * angular-layout - v0.1.0 - 2014-11-18
  * https://github.com/demerzel3/angular-layout
  *
  * Copyright (c) 2014
