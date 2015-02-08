@@ -1,8 +1,8 @@
 /**
- * angular-layout - v0.1.0 - 2014-11-18
+ * angular-layout - v0.1.1 - 2015-02-08
  * https://github.com/demerzel3/angular-layout
  *
- * Copyright (c) 2014
+ * Copyright (c) 2015
  * Authors : Gabriele Genta & Martin Mouterde
  * Licensed MIT <>
  */
@@ -30,15 +30,7 @@
     var directiveFactory = function (directiveName,direction, suffix) {
         angularLayoutModule.directive(directiveName, function () {
             return {
-                restrict: "E",
-                replace: true,
-                transclude: true,
-                template: '<div class="flexbox '+directiveName +'" direction' + suffix + '="'+direction+'" ng-transclude></div>'
-            };
-        });
-        angularLayoutModule.directive(directiveName, function () {
-            return {
-                restrict: "A",
+                restrict: "AE",
                 link: function (scope, element) {
                     element.attr("direction" + suffix, direction);
                     element.addClass("flexbox");

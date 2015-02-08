@@ -22,15 +22,7 @@
     var directiveFactory = function (directiveName,direction, suffix) {
         angularLayoutModule.directive(directiveName, function () {
             return {
-                restrict: "E",
-                replace: true,
-                transclude: true,
-                template: '<div class="flexbox '+directiveName +'" direction' + suffix + '="'+direction+'" ng-transclude></div>'
-            };
-        });
-        angularLayoutModule.directive(directiveName, function () {
-            return {
-                restrict: "A",
+                restrict: "AE",
                 link: function (scope, element) {
                     element.attr("direction" + suffix, direction);
                     element.addClass("flexbox");
